@@ -1,43 +1,20 @@
-import { useState } from "react";
-import "./Chatbot.css";
+import React from 'react';
+import './Chatbot.css';
+import ChatWindow from './components/ChatWindow';
 
-export default function Chatbot() {
-  const [messages, setMessages] = useState([]);
-
-  const sendMessage = (text) => {
-    if (!text) return;
-
-    setMessages((prev) => [...prev, { text, user: true }]);
-
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { text: "AI response coming soon...", user: false },
-      ]);
-    }, 800);
-  };
-
+const Chatbot = () => {
   return (
-    <div className="chat-container">
-      <h1>AI Assistant</h1>
-
-      <div className="chat-box">
-        {messages.map((msg, i) => (
-          <div key={i} className={msg.user ? "user" : "bot"}>
-            {msg.text}
-          </div>
-        ))}
+    <div className="chatbot-page-container">
+      <div className="page-header">
+        <h1>AI Health Assistant</h1>
+        <p>Ask questions and get AI-powered health guidance</p>
       </div>
-
-      <input
-        placeholder="Ask something..."
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            sendMessage(e.target.value);
-            e.target.value = "";
-          }
-        }}
-      />
+      
+      <div className="chatbot-wrapper">
+        <ChatWindow />
+      </div>
     </div>
   );
-}
+};
+
+export default Chatbot;
