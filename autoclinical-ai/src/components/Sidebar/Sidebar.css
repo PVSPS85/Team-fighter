@@ -1,1 +1,30 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  position: fixed;
+}
 
+.logo {
+  margin-bottom: 24px;
+}
+
+.nav-link {
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #cbd5f5;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background: #1e293b;
+}
+
+.active {
+  background: #0ea5a8;
+  color: white;
+}
