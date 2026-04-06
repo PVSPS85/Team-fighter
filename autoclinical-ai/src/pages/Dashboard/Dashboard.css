@@ -1,1 +1,45 @@
+.professional-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Reusable card styles for Dashboard components */
+.dash-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #E2E8F0;
+}
+
+.dash-card h3 {
+  margin: 0 0 1rem 0;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
