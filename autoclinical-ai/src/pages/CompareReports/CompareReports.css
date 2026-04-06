@@ -1,1 +1,95 @@
+.compare-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 
+.comparison-selectors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.metrics-section {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.metrics-section h3 {
+  margin: 0 0 1.5rem 0;
+  color: #0F172A;
+}
+
+/* ReportSelectorCard Styles */
+.selector-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #E2E8F0;
+}
+.selector-label {
+  background: #F1F5F9;
+  color: #0B7B8A;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.selector-card h2 { margin: 0 0 4px 0; font-size: 1.2rem; }
+.selector-card p { margin: 0 0 1.5rem 0; color: #64748B; font-size: 0.9rem; }
+.selector-score { font-size: 2rem; font-weight: 700; color: #0F172A; }
+.selector-score span { font-size: 1rem; color: #94A3B8; font-weight: 500; }
+
+/* VerdictBanner Styles */
+.verdict-banner {
+  background: #E6F6F8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.verdict-icon {
+  background: #10B981;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.verdict-text h3 { margin: 0 0 4px 0; color: #0F172A; font-size: 1.1rem; }
+.verdict-text p { margin: 0; color: #475569; font-size: 0.9rem; }
+.pts-highlight { color: #10B981; font-weight: 700; }
+
+/* MetricTable Styles */
+.metric-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.metric-table th {
+  text-align: left;
+  padding: 12px;
+  color: #94A3B8;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #E2E8F0;
+}
+.metric-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #334155;
+  font-size: 0.95rem;
+}
+.metric-table tr:last-child td { border-bottom: none; }
+.metric-name { font-weight: 600; color: #0F172A; }
+.metric-bold { font-weight: 600; }
+.change-positive { color: #10B981; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+.verdict-pill { display: inline-flex; align-items: center; gap: 4px; color: #10B981; font-weight: 500; font-size: 0.85rem; }
