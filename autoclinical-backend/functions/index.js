@@ -1,1 +1,20 @@
+const functions = require("firebase-functions");
+const auth = require("./api/auth");
+const dashboard = require("./api/dashboard");
+const reports = require("./api/reports");
+const processing = require("./api/processing");
+const analysis = require("./api/analysis");
+const insights = require("./api/insights");
+const compare = require("./api/compare");
+const chatbot = require("./api/chatbot");
+const settings = require("./api/settings");
 
+exports.auth = functions.https.onRequest(auth);
+exports.dashboard = functions.https.onRequest(dashboard);
+exports.reports = functions.https.onRequest(reports);
+exports.processing = functions.https.onRequest(processing);
+exports.analysis = functions.https.onRequest(analysis);
+exports.insights = functions.https.onRequest(insights);
+exports.compare = functions.https.onRequest(compare);
+exports.chatbot = functions.https.onRequest(chatbot);
+exports.settings = functions.https.onRequest(settings);
