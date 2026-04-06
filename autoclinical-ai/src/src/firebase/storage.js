@@ -1,22 +1,26 @@
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { app } from "./firebaseConfig";
+import { storage } from './firebaseConfig';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-export const storage = getStorage(app);
+// Upload a medical PDF/Image to Firebase Storage
+export const uploadReportFile = (file, userId, onProgress) => {
+  return new Promise((resolve, reject) => {
+    if (!file) return reject("No file provided");
 
-export const uploadReportFile = async (file, folder = "reports") => {
-  if (!file) throw new Error("No file provided");
+    const storageRef = ref(storage, `medical_reports/${userId}/${Date.now()}_${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-  const safeName = `${Date.now()}-${file.name.replace(/\s+/g, "_")}`;
-  const fileRef = ref(storage, `${folder}/${safeName}`);
-
-  const snapshot = await uploadBytes(fileRef, file);
-  const url = await getDownloadURL(snapshot.ref);
-
-  return {
-    path: snapshot.ref.fullPath,
-    url,
-    name: file.name,
-    type: file.type,
-    size: file.size,
-  };
+    uploadTask.on('state_changed', 
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        if (onProgress) onProgress(progress);
+      }, 
+      (error) => {
+        reject(error.message);
+      }, 
+      async () => {
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        resolve(downloadURL);
+      }
+    );
+  });
 };
