@@ -1,1 +1,4 @@
-
+/* Isolated UploadReport styling */
+.upload-wrapper { max-width: 800px; margin: 0 auto; padding-top: 2rem; }
+.upload-card-container { background: white; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden; margin-top: 2rem; }
+.upload-inner-area { padding: 4rem 2rem; text-align: center; border: 2px dashed #CBD5E1; margin: 1.5rem; border-radius: 12px; background-color: #F8FAFC; }
