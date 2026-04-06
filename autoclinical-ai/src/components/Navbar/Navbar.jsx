@@ -1,15 +1,27 @@
-import React from 'react';
-import './Navbar.css';
+import { memo } from "react";
+import "./Navbar.css";
 
 const Navbar = () => {
-    return (
-        <nav className="navbar">
-            <h1>AutoClinical AI</h1>
-            <div className="navbar-actions">
-                {/* Add controls for search, dark mode, etc. */}
-            </div>
-        </nav>
-    );
+  return (
+    <header className="navbar">
+      <div className="navbar-left">
+        <input
+          type="text"
+          placeholder="Search reports, metrics..."
+          className="search-input"
+        />
+      </div>
+
+      <div className="navbar-right">
+        <button className="role-btn">Patient</button>
+
+        <div className="icon-btn">🔔</div>
+        <div className="icon-btn">🌙</div>
+
+        <div className="avatar">J</div>
+      </div>
+    </header>
+  );
 };
 
-export default Navbar;
+export default memo(Navbar);
