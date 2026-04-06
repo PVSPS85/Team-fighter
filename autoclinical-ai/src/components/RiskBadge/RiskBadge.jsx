@@ -1,22 +1,31 @@
-const colors = {
-  Low: "#10b981",
-  Moderate: "#f59e0b",
-  High: "#ef4444",
-};
+import React from 'react';
+import './RiskBadge.css';
 
-export default function RiskBadge({ level = "Low" }) {
+const RiskBadge = ({ level }) => {
+  const getBadgeStyle = () => {
+    switch (level.toLowerCase()) {
+      case 'high':
+        return { bg: '#FEE2E2', text: '#EF4444', label: 'High Risk' };
+      case 'moderate':
+        return { bg: '#FEF3C7', text: '#F59E0B', label: 'Moderate' };
+      case 'low':
+      case 'normal':
+        return { bg: '#D1FAE5', text: '#10B981', label: 'Normal' };
+      default:
+        return { bg: '#F1F5F9', text: '#64748B', label: level };
+    }
+  };
+
+  const style = getBadgeStyle();
+
   return (
-    <span
-      style={{
-        background: `${colors[level]}20`,
-        color: colors[level],
-        padding: "4px 10px",
-        borderRadius: "12px",
-        fontSize: "12px",
-        fontWeight: "500",
-      }}
+    <span 
+      className="risk-badge" 
+      style={{ backgroundColor: style.bg, color: style.text }}
     >
-      {level}
+      {style.label}
     </span>
   );
-}
+};
+
+export default RiskBadge;
