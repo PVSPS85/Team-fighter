@@ -1,46 +1,110 @@
-.navbar {
+.top-navbar {
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #E2E8F0;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-  background: #ffffff;
-  border-bottom: 1px solid #eee;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.search-input {
-  width: 320px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+.navbar-search {
+  position: relative;
+  width: 350px;
+}
+
+.navbar-search input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  background-color: #F1F5F9;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.9rem;
   outline: none;
+  transition: all 0.2s;
 }
 
-.navbar-right {
+.navbar-search input:focus {
+  border-color: #0B7B8A;
+  background-color: #ffffff;
+}
+
+.navbar-search .search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94A3B8;
+}
+
+.navbar-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.role-btn {
-  background: #e6f7f8;
-  color: #0ea5a8;
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: none;
+  gap: 1.25rem;
 }
 
 .icon-btn {
+  background: transparent;
+  border: none;
+  color: #64748B;
   cursor: pointer;
-  font-size: 18px;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #6366f1;
-  color: white;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.2s;
+}
+
+.icon-btn:hover {
+  color: #0F172A;
+}
+
+.notification-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: #EF4444;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.user-profile-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 1.25rem;
+  border-left: 1px solid #E2E8F0;
+  cursor: pointer;
+}
+
+.avatar-circle {
+  width: 36px;
+  height: 36px;
+  background-color: #E6F6F8;
+  color: #0B7B8A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #64748B;
 }
