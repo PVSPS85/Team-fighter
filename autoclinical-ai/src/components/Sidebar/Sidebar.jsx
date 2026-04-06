@@ -1,21 +1,37 @@
-import React from 'react';
-import './Sidebar.css';
+import { NavLink } from "react-router-dom";
+import { memo } from "react";
+import "./Sidebar.css";
+
+const navItems = [
+  { path: "/", label: "Overview" },
+  { path: "/upload", label: "Upload Report" },
+  { path: "/history", label: "History" },
+  { path: "/compare", label: "Compare Reports" },
+  { path: "/insights", label: "Insights" },
+  { path: "/chatbot", label: "Chatbot" },
+  { path: "/settings", label: "Settings" },
+];
 
 const Sidebar = () => {
-    return (
-        <aside className="sidebar">
-            <ul>
-                <li>Overview</li>
-                <li>Upload</li>
-                <li>History</li>
-                <li>Compare</li>
-                <li>Insights</li>
-                <li>Chatbot</li>
-                <li>Settings</li>
-            </ul>
-        </aside>
-    );
+  return (
+    <aside className="sidebar">
+      <h2 className="logo">AutoClinical</h2>
+
+      <nav>
+        {navItems.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            {item.label}
+          </NavLink>
+        ))}
+      </nav>
+    </aside>
+  );
 };
 
-export default Sidebar;
-
+export default memo(Sidebar);
