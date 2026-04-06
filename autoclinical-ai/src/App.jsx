@@ -1,34 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Overview from './pages/Overview/Overview';
-import Dashboard from './pages/Dashboard/Dashboard';
-import UploadReport from './pages/UploadReport/UploadReport';
-import Processing from './pages/Processing/Processing';
-import AnalysisResults from './pages/AnalysisResults/AnalysisResults';
-import History from './pages/History/History';
-import CompareReports from './pages/CompareReports/CompareReports';
-import Insights from './pages/Insights/Insights';
-import Chatbot from './pages/Chatbot/Chatbot';
-import Settings from './pages/Settings/Settings';
+import React, { Suspense, lazy, memo } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-const App = () => {
-    return (
-        <Router>
-            <Switch>
-                <Route path="/" exact component={Overview} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/upload" component={UploadReport} />
-                <Route path="/processing" component={Processing} />
-                <Route path="/results" component={AnalysisResults} />
-                <Route path="/history" component={History} />
-                <Route path="/compare" component={CompareReports} />
-                <Route path="/insights" component={Insights} />
-                <Route path="/chatbot" component={Chatbot} />
-                <Route path="/settings" component={Settings} />
-            </Switch>
-        </Router>
-    );
-};
+const Overview = lazy(() => import("./pages/Overview/Overview"));
+const UploadReport = lazy(() => import("./pages/UploadReport/UploadReport"));
+const History = lazy(() => import("./pages/History/History"));
+const CompareReports = lazy(() => import("./pages/CompareReports/CompareReports"));
+const Insights = lazy(() => import("./pages/Insights/Insights"));
+const Chatbot = lazy(() => import("./pages/Chatbot/Chatbot"));
+const Settings = lazy(() => import("./pages/Settings/Settings"));
+
+const LoadingScreen = () => (
+  <div className="min-h-screen flex items-center justify-center text-slate-500">
+    Loading...
+  </div>
+);
+
+const App = memo(function App() {
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <Routes>
+        <Route path="/" element={<Overview />} />
+        <Route path="/upload" element={<UploadReport />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/compare" element={<CompareReports />} />
+        <Route path="/insights" element={<Insights />} />
+        <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
+  );
+});
 
 export default App;
-
