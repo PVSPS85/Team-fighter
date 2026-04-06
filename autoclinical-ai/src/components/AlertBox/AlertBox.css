@@ -1,1 +1,21 @@
+.alert {
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
 
+.alert.info {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.alert.success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.alert.error {
+  background: #fee2e2;
+  color: #dc2626;
+}
