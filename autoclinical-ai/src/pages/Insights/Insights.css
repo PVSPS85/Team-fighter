@@ -1,1 +1,46 @@
+.insights-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.insights-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chart-placeholder-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.chart-placeholder-card h3 {
+  margin: 0 0 1rem 0;
+  color: #0F172A;
+  font-size: 1.1rem;
+}
+
+.mock-chart-area {
+  background: #F8FAFC;
+  border: 1px dashed #CBD5E1;
+  border-radius: 8px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mock-text {
+  color: #94A3B8;
+  font-weight: 500;
+}
