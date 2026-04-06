@@ -1,1 +1,98 @@
+.upload-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
 
+.upload-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.upload-header h1 {
+  font-size: 2rem;
+  color: #0F172A;
+  margin-bottom: 0.5rem;
+}
+
+.upload-header p {
+  color: #64748B;
+}
+
+.upload-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.upload-area {
+  padding: 4rem 2rem;
+  text-align: center;
+  border: 2px dashed #CBD5E1;
+  margin: 1.5rem;
+  border-radius: 12px;
+  background-color: #F8FAFC;
+}
+
+.upload-icon-wrapper {
+  background: #E6F6F8;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.upload-area h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #1E293B;
+}
+
+.file-types {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.file-types span {
+  background: #F1F5F9;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.btn-browse {
+  background-color: #0B7B8A;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.upload-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-top: 1px solid #E2E8F0;
+  background: #FFFFFF;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0B7B8A;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
