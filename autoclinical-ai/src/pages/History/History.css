@@ -1,1 +1,40 @@
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
 
+.report-card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+  margin: 12px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.actions button {
+  margin-right: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.view {
+  background: #e0f2fe;
+}
+
+.compare {
+  background: #ede9fe;
+}
