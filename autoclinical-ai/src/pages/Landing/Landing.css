@@ -1,0 +1,18 @@
+.landing-container { min-height: 100vh; background: #020617; color: white; display: flex; flex-direction: column; align-items: center; }
+
+.landing-nav { width: 100%; max-width: 1200px; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.25rem; }
+.btn-login { background: transparent; color: white; border: 1px solid #334155; padding: 8px 24px; border-radius: 20px; cursor: pointer; font-weight: 600; }
+
+.hero-section { text-align: center; max-width: 800px; margin: 6rem auto 4rem; padding: 0 2rem; }
+.hero-badge { display: inline-block; background: rgba(11, 123, 138, 0.2); color: #2DD4BF; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid rgba(45, 212, 191, 0.3); }
+.hero-section h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; }
+.text-gradient { background: linear-gradient(135deg, #2DD4BF, #3B82F6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-section p { color: #94A3B8; font-size: 1.2rem; line-height: 1.6; margin-bottom: 2.5rem; }
+.btn-cta { background: #0B7B8A; color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 20px rgba(11, 123, 138, 0.4); }
+.btn-cta:hover { transform: translateY(-2px); }
+
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; width: 100%; padding: 0 2rem 6rem; }
+.feature-card { background: #0F172A; padding: 2rem; border-radius: 16px; border: 1px solid #1E293B; }
+.feature-card h3 { margin: 1.5rem 0 1rem; font-size: 1.25rem; }
+.feature-card p { color: #94A3B8; line-height: 1.6; margin: 0; }
