@@ -1,80 +1,27 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-require("dotenv").config();
+// Note: For a hackathon, you can use the Gemini API or OpenAI API.
+// Make sure to put your API key in your .env file as VITE_AI_API_KEY!
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+const API_KEY = import.meta.env.VITE_AI_API_KEY;
 
-// Analyze medical report and extract data
-const analyzeReport = async (extractedText) => {
-  const prompt = `
-    You are a medical AI assistant. Analyze this medical report text and return a JSON object with:
-    - patientName
-    - age
-    - gender
-    - metrics: { glucose, bloodPressure, cholesterol, hemoglobin, bmi }
-    - alerts: [ { field, message, severity (low|moderate|high) } ]
-    - healthScore: number between 0-100
-    - riskLevel: Low | Moderate | High
-    - aiSummary: brief explanation
-    - tags: array of condition tags
-
-    Medical Report:
-    ${extractedText}
-
-    Return only valid JSON, no extra text.
-  `;
-  const result = await model.generateContent(prompt);
-  const text = result.response.text();
-  return JSON.parse(text);
+export const analyzeMedicalText = async (extractedText) => {
+  try {
+    // Example using a generic fetch (adapt to your chosen LLM's exact endpoint)
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: `You are an AI Clinical Assistant. Analyze this medical report text and extract key biomarkers, flag anomalies, and provide a short summary. Return ONLY JSON format. \n\nReport Text: ${extractedText}`
+          }]
+        }]
+      })
+    });
+    
+    const data = await response.json();
+    return data.candidates[0].content.parts[0].text;
+  } catch (error) {
+    console.error("AI Analysis Failed:", error);
+    return null;
+  }
 };
-
-// Generate insights from multiple reports
-const generateInsights = async (allReportsData) => {
-  const prompt = `
-    You are a medical AI assistant. Analyze these multiple medical reports data 
-    and return a JSON array of insights. Each insight should have:
-    - type: trend | anomaly | correlation
-    - metric: the health metric name
-    - fromValue: starting value
-    - toValue: current value
-    - description: clear explanation
-    - iconType: up | down | warning | check | bulb
-
-    Reports Data:
-    ${JSON.stringify(allReportsData)}
-
-    Return only valid JSON array, no extra text.
-  `;
-  const result = await model.generateContent(prompt);
-  const text = result.response.text();
-  return JSON.parse(text);
-};
-
-// AI chatbot handler
-const chat = async (userMessage, history, reportContext) => {
-  const contextPrompt = reportContext
-    ? `You have access to this patient report: ${reportContext}\n\n`
-    : "";
-
-  const historyText = history
-    .map(h => `${h.role}: ${h.content}`)
-    .join("\n");
-
-  const prompt = `
-    You are AutoClinical AI Health Assistant.
-    You help patients understand their medical reports, 
-    suggest precautions, and answer health questions clearly.
-    Always remind users to consult a doctor for medical decisions.
-
-    ${contextPrompt}
-    Previous conversation:
-    ${historyText}
-
-    User: ${userMessage}
-    Assistant:
-  `;
-  const result = await model.generateContent(prompt);
-  return result.response.text();
-};
-
-module.exports = { analyzeReport, generateInsights, chat };
